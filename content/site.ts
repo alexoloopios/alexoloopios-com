@@ -2,11 +2,11 @@ export const site = {
   name: "Alex Chapman",
   brand: "Alex's Loop",
   domain: "alexoloopios.com",
-  title: "Alex's Loop · Games, software & more",
+  title: "Alex's Loop · Videos, games, software & more",
   description:
-    "Alex Chapman's home for accessible software, NVDA add-ons, future games, and whatever comes next.",
+    "Alex Chapman's home for accessible software, amazing videos, NVDA add-ons, future games, and whatever comes next.",
   intro:
-    "I'm Alex Chapman, a blind developer who cares about inclusive design and screen reader access. This is where I share what I make and what I'm exploring next.",
+    "I'm Alex Chapman, a blind content creator and developer who cares about accessibility, amazing opportunities for people to learn, be inspired and entertained. This wonderful place is where I share what I make and what I'm exploring next. I'm always trying to find the next best thing.",
 };
 
 export type Project = {
