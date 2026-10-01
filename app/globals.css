@@ -364,10 +364,16 @@ h1, h2, h3, p { overflow-wrap: break-word; }
 .text-link { color: #b7d3ff; font-weight: 750; text-underline-offset: .25em; }
 .text-link:hover { color: #fff; }
 .secondary-link { color: var(--muted); font-weight: 600; }
-.about-panel { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2rem; max-width: 830px; padding: 2.5rem; border: 1px solid var(--border); border-radius: 1.5rem; background: linear-gradient(135deg, #171f50, #25204e); }
+.about-panels { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: start; gap: 1.5rem; }
+.about-panel, .social-panel { min-width: 0; padding: 2.5rem; border: 1px solid var(--border); border-radius: 1.5rem; background: linear-gradient(135deg, #171f50, #25204e); }
+.about-panel { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2rem; }
 .about-symbol { display: grid; place-items: center; width: 4rem; height: 4rem; border-radius: 1rem; background: #5789e84a; color: #dbe9ff; font-size: 2.5rem; }
 .about-panel h2 { font-size: 2rem; }
 .about-panel p { max-width: 580px; color: var(--muted); }
+.social-panel h2 { margin: 0; font-size: 1.75rem; letter-spacing: -.04em; line-height: 1.2; }
+.social-links { margin: 1.5rem 0 0; padding-left: 1.5rem; list-style-type: disc; }
+.social-links li + li { margin-top: .8rem; }
+.social-links li::marker { color: var(--accent-bright); }
 
 .site-footer { border-top: 1px solid var(--border); background: #080c30; }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 125px; padding-block: 1.5rem; }
@@ -375,6 +381,7 @@ h1, h2, h3, p { overflow-wrap: break-word; }
 .footer-inner p span { margin-inline: .3rem; color: var(--accent-bright); }
 
 @media (max-width: 900px) {
+  .about-panels { grid-template-columns: 1fr; }
   .hero { grid-template-columns: 1fr; min-height: 0; padding-block: 4rem 5rem; }
   .hero-art { justify-self: center; width: min(100%, 460px); margin-top: 1.5rem; }
   .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -401,7 +408,8 @@ h1, h2, h3, p { overflow-wrap: break-word; }
   .content-section { padding-bottom: 4.5rem; }
   .closing-inner, .footer-inner { align-items: flex-start; flex-direction: column; }
   .inner-page { padding-block: 4rem 5rem; }
-  .about-panel { grid-template-columns: 1fr; gap: 1rem; padding: 1.6rem; }
+  .about-panel, .social-panel { padding: 1.6rem; }
+  .about-panel { grid-template-columns: 1fr; gap: 1rem; }
   .empty-state { padding: 1.6rem; }
 }
 
