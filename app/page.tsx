@@ -33,25 +33,26 @@ export default function Home() {
           <p className="eyebrow">Explore</p>
           <h2 id="explore-heading">A little bit of everything.</h2>
           <p>Follow the work from first idea to finished release, one project at a time.</p>
+          <p>Keep up with content like videos, audio and written work, from entertaining comedy to inspiring reviews and engaging tutorials.</p>
         </div>
         <div className="category-grid">
           <Link className="category-card game-card" href="/games">
             <span className="category-symbol" aria-hidden="true">◇</span>
-            <span className="category-number">01 / PLAY</span>
+            <span className="category-number" aria-hidden="true">01 / PLAY</span>
             <strong>Games</strong>
             <span>Worlds to explore, challenges to try, and experiments in play.</span>
             <span className="card-link">Discover games <span aria-hidden="true">↗</span></span>
           </Link>
           <Link className="category-card software-card" href="/software">
             <span className="category-symbol" aria-hidden="true">⌘</span>
-            <span className="category-number">02 / BUILD</span>
+            <span className="category-number" aria-hidden="true">02 / BUILD</span>
             <strong>Software</strong>
             <span>Useful tools and ideas turned into something you can use.</span>
             <span className="card-link">Discover software <span aria-hidden="true">↗</span></span>
           </Link>
           <Link className="category-card about-card" href="/about">
             <span className="category-symbol" aria-hidden="true">✳</span>
-            <span className="category-number">03 / CONNECT</span>
+            <span className="category-number" aria-hidden="true">03 / CONNECT</span>
             <strong>About</strong>
             <span>The person behind the projects and the things that inspire them.</span>
             <span className="card-link">Get to know me <span aria-hidden="true">↗</span></span>
