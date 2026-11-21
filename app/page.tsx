@@ -23,6 +23,10 @@ export default async function Home() {
           <div className="hero-actions">
             <Link className="button button-primary" href="/games">Explore games <span aria-hidden="true">↗</span></Link>
             <Link className="button button-secondary" href="/software">See software <span aria-hidden="true">→</span></Link>
+            <Link className="button button-secondary" href="/videos">Watch videos <span aria-hidden="true">→</span></Link>
+            <a className="button button-secondary" href={substack.url}>
+              Visit Substack <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
         <div className="hero-art" aria-hidden="true">

@@ -137,7 +137,7 @@ main:focus-visible, h1:focus-visible {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
   align-items: center;
   gap: clamp(1rem, 3vw, 3rem);
   min-height: 650px;
