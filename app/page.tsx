@@ -1,8 +1,12 @@
 import Link from "next/link";
-import { games, site, software } from "@/content/site";
+import { games, site, software, substack } from "@/content/site";
+import { getRecentSubstackPosts } from "@/lib/substack";
 
-export default function Home() {
+const postDateFormat = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+
+export default async function Home() {
   const projectCount = games.length + software.length;
+  const posts = await getRecentSubstackPosts(3);
 
   return (
     <>
@@ -80,6 +84,40 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="featured-section page-shell" aria-labelledby="posts-heading">
+        <div className="featured-heading">
+          <div>
+            <p className="eyebrow">Recent blog posts</p>
+            <h2 id="posts-heading">Fresh from {substack.name}.</h2>
+          </div>
+          <a className="text-link" href={substack.url}>View more on Substack <span aria-hidden="true">↗</span></a>
+        </div>
+        {posts.length > 0 ? (
+          <div className="release-grid">
+            {posts.map((post) => (
+              <article className="release-card post-card" key={post.url}>
+                {post.imageUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element -- Substack's CDN already serves optimised images.
+                  <img className="post-image" src={post.imageUrl} alt="" loading="lazy" decoding="async" />
+                ) : null}
+                {post.publishedAt ? (
+                  <p className="eyebrow">
+                    <time dateTime={post.publishedAt}>{postDateFormat.format(new Date(post.publishedAt))}</time>
+                  </p>
+                ) : null}
+                <h3>{post.title}</h3>
+                {post.description ? <p>{post.description}</p> : null}
+                <a className="text-link" href={post.url}>
+                  Read post<span className="visually-hidden">: {post.title}</span><span aria-hidden="true"> ↗</span>
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="posts-empty">New posts will appear here soon. In the meantime, catch up on <a className="text-link" href={substack.url}>{substack.name}</a>.</p>
+        )}
       </section>
 
       <section className="closing-section" aria-labelledby="latest-heading">

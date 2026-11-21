@@ -26,6 +26,7 @@ export default function AboutPage() {
           <ul className="social-links">
             <li><a className="text-link" href="https://github.com/alexoloopios">GitHub</a></li>
             <li><a className="text-link" href="https://www.youtube.com/channel/UCRzlB1rsyYl66j9fTlLUH8Q/videos">YouTube</a></li>
+            <li><a className="text-link" href="https://alexoloopios.substack.com">Substack</a></li>
             <li><a className="text-link" href="https://x.com/alexoloopios">X / Twitter</a></li>
             <li><a className="text-link" href="https://facebook.com/alexoloopios">Facebook</a></li>
             <li><a className="text-link" href="https://vee.seedy.cc/@alexchapman" rel="me">Mastodon</a></li>

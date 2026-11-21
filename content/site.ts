@@ -9,6 +9,11 @@ export const site = {
     "I'm Alex Chapman, a blind content creator and developer who cares about accessibility, amazing opportunities for people to learn, be inspired and entertained. This wonderful place is where I share what I make and what I'm exploring next. I'm always trying to find the next best thing.",
 };
 
+export const substack = {
+  name: "Alex's Cosmic Galaxy",
+  url: "https://alexoloopios.substack.com",
+};
+
 export type Project = {
   title: string;
   description: string;
