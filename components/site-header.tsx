@@ -5,6 +5,7 @@ const navigation = [
   { href: "/", label: "Home" },
   { href: "/games", label: "Games" },
   { href: "/software", label: "Software" },
+  { href: "/videos", label: "Videos" },
   { href: "/about", label: "About" },
 ];
 

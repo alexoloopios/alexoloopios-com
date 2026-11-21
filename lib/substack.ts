@@ -1,4 +1,5 @@
 import { substack } from "@/content/site";
+import { loadResiliently } from "@/lib/resilient-fetch";
 
 export type SubstackPost = {
   title: string;
@@ -13,19 +14,18 @@ export type SubstackPost = {
 const REVALIDATE_SECONDS = 60 * 60;
 
 export async function getRecentSubstackPosts(limit = 3): Promise<SubstackPost[]> {
-  try {
+  return loadResiliently("Substack feed", async () => {
     const response = await fetch(`${substack.url}/feed`, {
       next: { revalidate: REVALIDATE_SECONDS, tags: ["substack"] },
     });
     if (!response.ok) {
       throw new Error(`Substack feed responded with ${response.status}`);
     }
-    return parseFeed(await response.text()).slice(0, limit);
-  } catch (error) {
-    // Never break the homepage because Substack is unavailable.
-    console.error("Unable to load Substack posts:", error);
-    return [];
-  }
+    const posts = parseFeed(await response.text());
+    // A feed that parses to nothing is almost certainly an error page, not "no posts".
+    if (posts.length === 0) throw new Error("Substack feed contained no posts");
+    return posts.slice(0, limit);
+  }, []);
 }
 
 function parseFeed(xml: string): SubstackPost[] {

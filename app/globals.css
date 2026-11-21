@@ -341,7 +341,20 @@ h1, h2, h3, p { overflow-wrap: break-word; }
 .release-card h3 { margin: .3rem 0 .75rem; font-size: 1.5rem; letter-spacing: -.045em; line-height: 1.15; }
 .release-card > p:not(.eyebrow) { margin: 0 0 1.5rem; color: var(--muted); }
 .release-card .text-link { margin-top: auto; }
-.post-image { display: block; width: calc(100% + 3.3rem); max-width: none; aspect-ratio: 16 / 9; margin: -1.65rem -1.65rem 1.25rem; object-fit: cover; border-radius: 1.3rem 1.3rem 0 0; border-bottom: 1px solid var(--border); }
+.media-image { display: block; width: calc(100% + 3.3rem); max-width: none; aspect-ratio: 16 / 9; margin: -1.65rem -1.65rem 1.25rem; object-fit: cover; border-radius: 1.3rem 1.3rem 0 0; border-bottom: 1px solid var(--border); background: #0b1236; }
+.project-card .media-image { width: calc(100% + 4rem); margin: -2rem -2rem 1.4rem; }
+.heading-links { display: flex; flex: none; flex-wrap: wrap; gap: .5rem 1.5rem; margin-bottom: .45rem; }
+.video-category { margin-top: 4.5rem; }
+.video-category > h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.05em; line-height: 1.1; }
+.category-description { max-width: 650px; margin: .6rem 0 0; color: var(--muted); font-size: 1.1rem; }
+.video-subgroup { margin-top: 2.25rem; }
+.video-subgroup > h3 { margin: 0 0 1rem; color: var(--accent-bright); font-size: 1.15rem; letter-spacing: -.01em; }
+.series-card { display: flex; flex-direction: column; align-items: flex-start; }
+.series-card h3, .series-card h4 { margin: 0 0 .7rem; font-size: 1.6rem; letter-spacing: -.04em; line-height: 1.15; }
+.series-card > p:not(.release-version) { margin: 0; }
+.series-card .release-version { margin: 1.2rem 0 1.4rem; }
+.series-card .text-link { margin-top: auto; }
+.episodes-heading { margin: 0 0 1.25rem; font-size: 1.3rem; letter-spacing: -.02em; }
 .posts-empty { margin: 0; color: var(--muted); }
 
 .closing-section { border-top: 1px solid var(--border); background: linear-gradient(100deg, #161a47, #0c183e); }

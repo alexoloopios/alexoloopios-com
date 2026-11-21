@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { games, site, software, substack } from "@/content/site";
+import { VideoCard } from "@/components/video-card";
+import { youtube } from "@/content/videos";
 import { getRecentSubstackPosts } from "@/lib/substack";
+import { getChannelVideos } from "@/lib/youtube";
 
 const postDateFormat = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 export default async function Home() {
   const projectCount = games.length + software.length;
-  const posts = await getRecentSubstackPosts(3);
+  const [posts, videos] = await Promise.all([getRecentSubstackPosts(3), getChannelVideos()]);
+  const latestVideos = videos?.slice(0, 3) ?? [];
 
   return (
     <>
@@ -86,6 +90,28 @@ export default async function Home() {
         </div>
       </section>
 
+      <section className="featured-section page-shell" aria-labelledby="videos-heading">
+        <div className="featured-heading">
+          <div>
+            <p className="eyebrow">Latest videos</p>
+            <h2 id="videos-heading">Now playing.</h2>
+          </div>
+          <div className="heading-links">
+            <Link className="text-link" href="/videos">Browse by series <span aria-hidden="true">→</span></Link>
+            <a className="text-link" href={youtube.channelUrl}>View all on YouTube <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        {latestVideos.length > 0 ? (
+          <div className="release-grid">
+            {latestVideos.map((video) => (
+              <VideoCard video={video} key={video.id} />
+            ))}
+          </div>
+        ) : (
+          <p className="posts-empty">The latest uploads will appear here soon. Until then, <a className="text-link" href={youtube.channelUrl}>catch up on YouTube</a>.</p>
+        )}
+      </section>
+
       <section className="featured-section page-shell" aria-labelledby="posts-heading">
         <div className="featured-heading">
           <div>
@@ -100,7 +126,7 @@ export default async function Home() {
               <article className="release-card post-card" key={post.url}>
                 {post.imageUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element -- Substack's CDN already serves optimised images.
-                  <img className="post-image" src={post.imageUrl} alt="" loading="lazy" decoding="async" />
+                  <img className="media-image" src={post.imageUrl} alt="" loading="lazy" decoding="async" />
                 ) : null}
                 {post.publishedAt ? (
                   <p className="eyebrow">
